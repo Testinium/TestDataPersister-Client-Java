@@ -22,8 +22,8 @@ public class BucketClient extends UniRestClient<Bucket> {
         super(apiURL);
     }
 
-    public List<Bucket> getAll() throws UnirestException {
-        return (List<Bucket>) this.get(bucketPath);
+    public RestResponsePage<Bucket> getAll() throws UnirestException {
+        return (RestResponsePage<Bucket>) this.get(bucketPath);
     }
 
 

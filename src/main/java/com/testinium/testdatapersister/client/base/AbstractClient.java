@@ -2,7 +2,9 @@ package com.testinium.testdatapersister.client.base;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.testinium.testdatapersister.client.enums.AuthType;
 import com.testinium.testdatapersister.client.model.AbstractResponse;
+import com.testinium.testdatapersister.client.model.BasicAuthModel;
 
 /**
  * Created by erdoganonur
@@ -11,10 +13,18 @@ import com.testinium.testdatapersister.client.model.AbstractResponse;
 public abstract class AbstractClient<TD extends AbstractResponse> {
 
     protected String baseURL;
+    protected BasicAuthModel basicAuth;
+    protected AuthType authType = AuthType.BASIC;
 
 
     public AbstractClient(String baseURL) {
         this.baseURL = baseURL;
+        this.basicAuth = new BasicAuthModel("admin", "admin");
+    }
+
+    public AbstractClient(String baseURL, BasicAuthModel basicAuth) {
+        this.baseURL = baseURL;
+        this.basicAuth = basicAuth;
     }
 
     /**
@@ -63,5 +73,21 @@ public abstract class AbstractClient<TD extends AbstractResponse> {
 
     public void setBaseURL(String baseURL) {
         this.baseURL = baseURL;
+    }
+
+    public BasicAuthModel getBasicAuth() {
+        return basicAuth;
+    }
+
+    public void setBasicAuth(BasicAuthModel basicAuth) {
+        this.basicAuth = basicAuth;
+    }
+
+    public AuthType getAuthType() {
+        return authType;
+    }
+
+    public void setAuthType(AuthType authType) {
+        this.authType = authType;
     }
 }

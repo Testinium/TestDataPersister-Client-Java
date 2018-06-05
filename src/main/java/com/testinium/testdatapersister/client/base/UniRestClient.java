@@ -55,27 +55,27 @@ public class UniRestClient<TD> extends AbstractClient {
     }
 
     public AbstractResponse<TD> get(String path) throws UnirestException {
-        HttpResponse<AbstractResponse> response = Unirest.get(this.baseURL + path).asObject(AbstractResponse.class);
+        HttpResponse<AbstractResponse> response = Unirest.get(this.baseURL + path).basicAuth(this.basicAuth.getUsername(), this.basicAuth.getPassword()).asObject(AbstractResponse.class);
         return response.getBody();
     }
 
 
     public AbstractResponse<TD> put(String path, AbstractResponse data) throws UnirestException {
 
-        HttpResponse<AbstractResponse> response = Unirest.put(this.baseURL + path).body(data).asObject(AbstractResponse.class);
+        HttpResponse<AbstractResponse> response = Unirest.put(this.baseURL + path).basicAuth(this.basicAuth.getUsername(), this.basicAuth.getPassword()).body(data).asObject(AbstractResponse.class);
         return response.getBody();
     }
 
 
     public AbstractResponse<TD> post(String path, AbstractResponse data) throws UnirestException {
 
-        HttpResponse<AbstractResponse> response = Unirest.post(this.baseURL + path).body(data).asObject(AbstractResponse.class);
+        HttpResponse<AbstractResponse> response = Unirest.post(this.baseURL + path).basicAuth(this.basicAuth.getUsername(), this.basicAuth.getPassword()).body(data).asObject(AbstractResponse.class);
         return response.getBody();
     }
 
     public AbstractResponse<TD> delete(String path, AbstractResponse data) throws UnirestException {
 
-        HttpResponse<AbstractResponse> response = Unirest.delete(this.baseURL + path).body(data).asObject(AbstractResponse.class);
+        HttpResponse<AbstractResponse> response = Unirest.delete(this.baseURL + path).basicAuth(this.basicAuth.getUsername(), this.basicAuth.getPassword()).body(data).asObject(AbstractResponse.class);
         return response.getBody();
     }
 

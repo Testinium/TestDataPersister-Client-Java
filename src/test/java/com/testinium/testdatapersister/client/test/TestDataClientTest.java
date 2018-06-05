@@ -94,9 +94,9 @@ public class TestDataClientTest {
         System.out.println(response.toString());
         System.out.println(response.getContent().toString());
 
-        List bucketList = testDataPersisterClient.getBucketClient().getAll();
+        RestResponsePage<Bucket> bucketList = testDataPersisterClient.getBucketClient().getAll();
         System.out.println(bucketList);
-        System.out.println(bucketList.get(0));
+        System.out.println(bucketList.getContent().get(0    ));
 
     }
 }
